@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+
+   - name: Install Helm
+     get_url:
+         url: https://get.helm.sh/helm-v3.10.1-linux-amd64.tar.gz
+         dest: /etc/yum.repos.d/helm.repo
