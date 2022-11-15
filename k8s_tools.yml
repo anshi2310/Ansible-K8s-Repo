@@ -30,7 +30,7 @@
        enabled: yes
        state: started
        
-- hosts: master
+- hosts: masters
   become: yes
   tasks:
     - name: install kubectl
