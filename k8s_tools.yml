@@ -24,13 +24,16 @@
         state: present
         update_cache: true
 
-   - name: install kubectl
-     yum:
-        name: kubectl-1.22.12-0
-        state: present
-
    - name: start kubelet
      service:
        name: kubelet
        enabled: yes
        state: started
+       
+- hosts: master
+  become: yes
+  tasks:
+    - name: install kubectl
+      yum:
+        name: kubectl-1.22.12-0
+        state: present
