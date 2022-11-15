@@ -1,0 +1,36 @@
+---
+  - hosts: all
+    become: yes
+    vars:
+      packages:
+          - vim
+          - net-tools
+          - wget
+          - telnet
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+          - zip
+          - lsof
+          - nc
+          - whatprovides lsb_release
+          - redhat-lsb-core
+
+    tasks:
+      - name: Install a list of packages
+        action: yum name= "{{packages}}" state=installed
+
+
+      - name: Stop and Disable Firewalld
+        service:
+          name: firewalld
+          state: stopped
+          enabled: false
+
+
+      - name: Upgrade all packages
+        yum:
+            name: '*'
+            state: latest
+
+
