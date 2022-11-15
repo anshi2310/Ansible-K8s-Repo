@@ -13,7 +13,6 @@
           - zip
           - lsof
           - nc
-          - whatprovides lsb_release
           - redhat-lsb-core
 
     tasks:
